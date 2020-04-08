@@ -1,4 +1,4 @@
-$(document).scroll(() => {
+document.addEventListener('scroll', () => {
 	if ($(window).scrollTop() > 40) {
 		$('header').addClass('header-fixed');
 	}
@@ -7,10 +7,10 @@ $(document).scroll(() => {
 	}
 });
 
-$('nav').mouseover(function() {
+$('nav').mouseover(() => {
 	$('.nav-itens').addClass('nav-show');
 });
-$('nav').mouseout(function() {
+$('nav').mouseout(() => {
 	$('.nav-itens').removeClass('nav-show');
 });
 $('a.tooltip').mouseover(function() {
@@ -19,11 +19,12 @@ $('a.tooltip').mouseover(function() {
 $('a.tooltip').mouseout(function() {
 	$(this).children('.text-tooltip').css('opacity', '0');
 });
-$('.text-tooltip').mouseover(function(e) {
-	e.stopPropagation();
-});
+$('.text-tooltip').mouseover(e =>
+	e.stopPropagation()
+);
 
 $('a.tooltip').click(function() {
-	$('body').animate({scrollTop: $($(this).attr('href')).offset().top}, 375);
-	return false;
+	$('body').animate({
+		scrollTop: $($(this).attr('href')).offset().top
+	}, 375);
 });
