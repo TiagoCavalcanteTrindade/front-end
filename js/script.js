@@ -23,7 +23,8 @@ $('.text-tooltip').mouseover(e =>
 	e.stopPropagation()
 );
 
-$('a.tooltip').click(function() {
+$('a.tooltip').click(function(e) {
+	e.preventDefault();
 	$('body').animate({
 		scrollTop: $($(this).attr('href')).offset().top
 	}, 375);
